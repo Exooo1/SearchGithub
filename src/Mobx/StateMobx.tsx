@@ -29,6 +29,7 @@ interface StoreType {
     users: Array<UserType>
     countPage: number
     page: number[]
+    notFound: string
 }
 
 
@@ -37,6 +38,7 @@ class Store implements StoreType {
     users: Array<UserType> = [];
     countPage = 0;
     page: number[] = [];
+    notFound = ''
 
     constructor() {
         makeAutoObservable(this)
@@ -45,6 +47,7 @@ class Store implements StoreType {
     resetArray() {
         this.users = []
         this.page = []
+        this.notFound=''
     }
 
     async addUsers(value: string, pag?: number) {
@@ -53,6 +56,8 @@ class Store implements StoreType {
             this.users = data.items
             console.log(data)
             this.totalCount = data.total_count
+            this.notFound=''
+            if (!this.users.length) this.notFound = 'not found user'
             this.countPage = Math.ceil(this.totalCount / 15)
             this.page = []
             for (let i = 1; i < this.countPage; i++) this.page.push(i)

@@ -49,6 +49,10 @@ export const SearchStyle = styled.div`
     color: white;
     font-weight: 800;
   }
+  p{
+    color: red;
+    height: 2px;
+  }
 
   input {
     font-size: 15px;
@@ -82,7 +86,7 @@ export const UsersStyle = styled.div`
 
   div {
     h2 {
-      
+      word-break: break-word;
       color: white;
     }
 

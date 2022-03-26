@@ -57,6 +57,7 @@ export class Search extends React.Component<PropsSearch, StateSearch> {
                 <button disabled={!this.state.value} onClick={this.resetValue}>Reset</button>
                 <SearchStyle>
                     <h1>You can find the user here</h1>
+                    {storeSearch.notFound&&<p>{storeSearch.notFound}</p>}
                     <input onKeyPress={this.addKeyPress} type="text" placeholder="User name GitHub"
                            value={this.state.value}
                            onChange={this.changeValue}/>
